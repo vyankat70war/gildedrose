@@ -19,4 +19,5 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         return app.items[0].toString();
+        //Testing mob
     }}
