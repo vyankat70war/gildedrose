@@ -16,20 +16,14 @@ class GildedRose {
 
     private void updateQuality(Item item) {
         if (item.name.equals(AGED_BRIE)) {
-            if (item.quality < 50) {
-                item.quality++;
-
-            }
-
-            item.sellIn--;
-
-            if (item.sellIn < 0) {
-                if (item.quality < 50) {
-                    item.quality++;
+            if (false
+                    && !item.name.equals(BACKSTAGE_PASSES)) {
+                if (item.quality > 0) {
+                    if (!item.name.equals(SULFURAS)) {
+                        item.quality--;
+                    }
                 }
-            }
-        } else {
-            if (item.name.equals(BACKSTAGE_PASSES)) {
+            } else {
                 if (item.quality < 50) {
                     item.quality++;
 
@@ -47,39 +41,78 @@ class GildedRose {
                         }
                     }
                 }
-            } else {
-                if (item.quality > 0) {
-                    if (item.name.equals(SULFURAS)) {
-                    } else {
-                        item.quality--;
-                    }
-                }
             }
 
-            if (item.name.equals(SULFURAS)) {
-            } else {
+            if (!item.name.equals(SULFURAS)) {
                 item.sellIn--;
             }
 
             if (item.sellIn < 0) {
-                if (item.name.equals(AGED_BRIE)) {
+                if (!item.name.equals(AGED_BRIE)) {
+                    if (!item.name.equals(BACKSTAGE_PASSES)) {
+                        if (item.quality > 0) {
+                            if (!item.name.equals(SULFURAS)) {
+                                item.quality--;
+                            }
+                        }
+                    } else {
+                        item.quality = item.quality - item.quality;
+                    }
+                } else {
                     if (item.quality < 50) {
                         item.quality++;
                     }
-                } else {
+                }
+            }
+        } else {
+            if (!item.name.equals(AGED_BRIE)
+                    && !item.name.equals(BACKSTAGE_PASSES)) {
+                if (item.quality > 0) {
+                    if (!item.name.equals(SULFURAS)) {
+                        item.quality--;
+                    }
+                }
+            } else {
+                if (item.quality < 50) {
+                    item.quality++;
+
                     if (item.name.equals(BACKSTAGE_PASSES)) {
-                        item.quality = item.quality - item.quality;
-                    } else {
-                        if (item.quality > 0) {
-                            if (item.name.equals(SULFURAS)) {
-                                return;
+                        if (item.sellIn < 11) {
+                            if (item.quality < 50) {
+                                item.quality++;
                             }
-                            item.quality--;
+                        }
+
+                        if (item.sellIn < 6) {
+                            if (item.quality < 50) {
+                                item.quality++;
+                            }
                         }
                     }
                 }
             }
 
+            if (!item.name.equals(SULFURAS)) {
+                item.sellIn--;
+            }
+
+            if (item.sellIn < 0) {
+                if (!item.name.equals(AGED_BRIE)) {
+                    if (!item.name.equals(BACKSTAGE_PASSES)) {
+                        if (item.quality > 0) {
+                            if (!item.name.equals(SULFURAS)) {
+                                item.quality--;
+                            }
+                        }
+                    } else {
+                        item.quality = item.quality - item.quality;
+                    }
+                } else {
+                    if (item.quality < 50) {
+                        item.quality++;
+                    }
+                }
+            }
         }
     }
 
