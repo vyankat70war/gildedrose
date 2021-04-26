@@ -1,7 +1,7 @@
 package com.gildedrose;
 
 public class TexttestFixture {
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         System.out.println("OMGHAI!");
 
         Item[] items = new Item[] {

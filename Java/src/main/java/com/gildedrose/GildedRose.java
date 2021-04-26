@@ -28,7 +28,39 @@ class GildedRose {
                     item.quality++;
                 }
             }
+        } else extracted(item);
+    }
+
+    private void extracted(Item item) {
+        if (!item.name.equals(BACKSTAGE_PASSES)) {
+            if (item.quality > 0) {
+                if (!item.name.equals(SULFURAS)) {
+                    item.quality--;
+                }
+            }
         } else {
+            if (item.quality < 50) {
+                item.quality++;
+
+                if (item.sellIn < 11) {
+                    if (item.quality < 50) {
+                        item.quality++;
+                    }
+                }
+
+                if (item.sellIn < 6) {
+                    if (item.quality < 50) {
+                        item.quality++;
+                    }
+                }
+            }
+        }
+
+        if (!item.name.equals(SULFURAS)) {
+            item.sellIn--;
+        }
+
+        if (item.sellIn < 0) {
             if (!item.name.equals(BACKSTAGE_PASSES)) {
                 if (item.quality > 0) {
                     if (!item.name.equals(SULFURAS)) {
@@ -36,37 +68,7 @@ class GildedRose {
                     }
                 }
             } else {
-                if (item.quality < 50) {
-                    item.quality++;
-
-                    if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality++;
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality++;
-                        }
-                    }
-                }
-            }
-
-            if (!item.name.equals(SULFURAS)) {
-                item.sellIn--;
-            }
-
-            if (item.sellIn < 0) {
-                if (!item.name.equals(BACKSTAGE_PASSES)) {
-                    if (item.quality > 0) {
-                        if (!item.name.equals(SULFURAS)) {
-                            item.quality--;
-                        }
-                    }
-                } else {
-                    item.quality = item.quality - item.quality;
-                }
+                item.quality = item.quality - item.quality;
             }
         }
     }
