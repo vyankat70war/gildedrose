@@ -15,21 +15,21 @@ class GildedRose {
     }
 
     private void updateQuality(Item item) {
-        if (item.name.equals(AGED_BRIE)) {
-            if (item.quality < 50) {
-                item.quality++;
-
-            }
-
-            item.sellIn--;
-
-            if (item.sellIn < 0) {
+        switch (item.name) {
+            case AGED_BRIE:
                 if (item.quality < 50) {
                     item.quality++;
                 }
-            }
-        } else {
-            if (item.name.equals(BACKSTAGE_PASSES)) {
+
+                item.sellIn--;
+
+                if (item.sellIn < 0) {
+                    if (item.quality < 50) {
+                        item.quality++;
+                    }
+                }
+                break;
+            case BACKSTAGE_PASSES:
                 if (item.quality < 50) {
                     item.quality++;
 
@@ -51,25 +51,28 @@ class GildedRose {
                 if (item.sellIn < 0) {
                     item.quality = item.quality - item.quality;
                 }
-            }else {
-                if (item.quality > 0) {
-                    if (!item.name.equals(SULFURAS)) {
-                        item.quality--;
-                    }
-                }
-
-                if (!item.name.equals(SULFURAS)) {
-                    item.sellIn--;
-                }
+                break;
+            case SULFURAS:
 
                 if (item.sellIn < 0) {
                     if (item.quality > 0) {
-                        if (!item.name.equals(SULFURAS)) {
-                            item.quality--;
-                        }
+                        return;
                     }
                 }
-            }
+                break;
+            default:
+                if (item.quality > 0) {
+                    item.quality--;
+                }
+
+                item.sellIn--;
+
+                if (item.sellIn < 0) {
+                    if (item.quality > 0) {
+                        item.quality--;
+                    }
+                }
+                break;
         }
     }
 
