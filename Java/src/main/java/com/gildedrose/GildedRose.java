@@ -1,9 +1,6 @@
 package com.gildedrose;
 
 class GildedRose {
-    public static final String AGED_BRIE = "Aged Brie";
-    public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
-    public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -11,69 +8,7 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        for (Item item : items) updateQuality(item);
-    }
-
-    private void updateQuality(Item item) {
-        switch (item.name) {
-            case AGED_BRIE:
-                if (item.quality < 50) {
-                    item.quality++;
-                }
-
-                item.sellIn--;
-
-                if (item.sellIn < 0) {
-                    if (item.quality < 50) {
-                        item.quality++;
-                    }
-                }
-                break;
-            case BACKSTAGE_PASSES:
-                if (item.quality < 50) {
-                    item.quality++;
-
-                    if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality++;
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality++;
-                        }
-                    }
-                }
-
-                item.sellIn--;
-
-                if (item.sellIn < 0) {
-                    item.quality = item.quality - item.quality;
-                }
-                break;
-            case SULFURAS:
-
-                if (item.sellIn < 0) {
-                    if (item.quality > 0) {
-                        return;
-                    }
-                }
-                break;
-            default:
-                if (item.quality > 0) {
-                    item.quality--;
-                }
-
-                item.sellIn--;
-
-                if (item.sellIn < 0) {
-                    if (item.quality > 0) {
-                        item.quality--;
-                    }
-                }
-                break;
-        }
+        for (Item item : items) item.updateQuality();
     }
 
 }
