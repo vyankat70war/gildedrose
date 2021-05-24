@@ -5,6 +5,7 @@ public class Item {
     public static final String AGED_BRIE = "Aged Brie";
     public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+    public static final String CONJURED = "Conjured";
     public final String name;
 
     public int sellIn;
@@ -26,6 +27,8 @@ public class Item {
                 return new BackstagePassesItem(item.sellIn, item.quality);
             case SULFURAS:
                 return new SulfurasItem(item.sellIn, item.quality);
+            case CONJURED:
+                return new ConjuredItem(item.sellIn, item.quality);
             default:
                 return new Item(item.name, item.sellIn, item.quality);
         }
