@@ -18,24 +18,24 @@ public class Item {
 
     }
 
-   @Override
+    public static Item createItem(Item item) {
+        switch (item.name) {
+            case AGED_BRIE:
+                return new AgedBrieItem(item.sellIn, item.quality);
+            case BACKSTAGE_PASSES:
+                return new BackstagePassesItem(item.sellIn, item.quality);
+            case SULFURAS:
+                return new SulfurasItem(item.sellIn, item.quality);
+            default:
+                return new Item(item.name, item.sellIn, item.quality);
+        }
+    }
+
+    @Override
    public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
-    Item createItem() {
-        {
-            switch (name) {
-                case AGED_BRIE:
-                    return new AgedBrieItem(sellIn, quality);
-                case BACKSTAGE_PASSES:
-                    return new BackstagePassesItem(sellIn, quality);
-                case SULFURAS:
-                    return new SulfurasItem(sellIn, quality);
-                default:
-                    return this;
-            }
-        }
-    }
+
     void updateQuality() {
         switch (name) {
             case AGED_BRIE:

@@ -8,7 +8,10 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        for (Item item : items) item.updateQuality();
+        for (int i = 0, itemsLength = items.length; i < itemsLength; i++) {
+            items[i]  = Item.createItem(items[i]);
+            items[i].updateQuality();
+        }
     }
 
 }
